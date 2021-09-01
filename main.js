@@ -80,8 +80,8 @@ for (let i = 0; i < teams.length; i++) {
 
     console.log(`Risultati: ${teams[i].nome} ha ${teams[i].puntiFatti} punti e ${teams[i].falliSubiti} falli subiti`);
 
-    teams[i].puntiFatti = randomNumber(21, 28)
-    teams[i].falliSubiti = randomNumber(3, 10)
+    teams[i].puntiFatti = randomNumber(21, 28);
+    teams[i].falliSubiti = randomNumber(3, 10);
 
 }
 
@@ -106,3 +106,41 @@ for (i = 0; i < teams.length; i++) {
 }
 
 console.log(newTeams);
+
+
+
+// Snack 3
+
+// Scrivere una funzione che accetti tre argomenti, un array e due numeri (a più piccolo di b).
+// La funzione ritornerà un nuovo array con i valori che hanno la posizione compresa tra i due numeri.
+// Usiamo i nuovi metodi degli array forEach o filter.
+
+
+const cognomi = ['Bianchi', 'Rossi', 'Verdi', 'Mattei', 'Cecchinato', 'Djokovic', 'Nadal', 'Zverev', 'Berrettini', 'Francischi'];
+
+const a = randomNumber(0, cognomi.length);
+const b = randomNumber(a, cognomi.length);
+
+// filter 
+
+const array1 = (array, a, b) => {
+    return array.filter((element, index) => {
+        return index >= a && index <= b;
+    })
+};
+
+console.log(array1(cognomi, a, b), a, b);
+
+// forEach 
+
+// const array = (array, a,b) => {
+//     const newArray = [];
+//     array.forEach((element, index) => {
+//         if(index >= a && index <= b){
+//             newArray.push(element);
+//         }
+//     });
+//     return newArray;
+// };
+
+// console.log(array(cognomi, a,b), a, b);
