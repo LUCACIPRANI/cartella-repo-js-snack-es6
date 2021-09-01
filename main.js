@@ -1,13 +1,11 @@
 // Snack 1
 // Creare un array di oggetti:
 // Ogni oggetto descriverà una bici da corsa con le seguenti proprietà: nome e peso.
-// Stampare a schermo la bici con peso minore utilizzando destructuring e template literal;
-
 
 const bicycle = [
     {
         name: 'Bianchi',
-        weight: 8.8,
+        weight: 7.8,
     },
     {
         name: 'Trek',
@@ -19,25 +17,33 @@ const bicycle = [
     }
 ];
 
+// Stampare a schermo la bici con peso minore;
 
-let lowerWeightBike = bicycle[0].weight;
-let lowerNameBike = bicycle[0];
+let lightBike = bicycle[0];
 
 for (let i = 0; i < bicycle.length; i++) {
-    console.log(bicycle[i]);
+    console.log(bicycle[i].name);
     console.log(bicycle[i].weight);
 
-    if (bicycle[i].weight < lowerWeightBike) {
-        lowerWeightBike = bicycle[i].weight;
-
-        lowerNameBike = bicycle[i].name;
-
+    if (bicycle[i].weight < lightBike.weight) {
+        lightBike = bicycle[i];
     }
 }
 
+console.log(lightBike);
 
-console.log(`the lowest weight Bike is ${lowerNameBike} with ${lowerWeightBike} kg`);
+// utilizzando destructuring e template literal;
 
+const {weight, name} = lightBike;
+console.log(weight, name);
+
+document.getElementById('container').innerHTML = 
+`
+<ul>
+    <li> nome: ${name} </li>
+    <li> peso: ${weight} </li>
+</ul>
+`;
 
 // BONUS: inserire una arrow function che preso in input l'array di bici ritorni l'oggetto con bici più leggera;
 
@@ -49,7 +55,7 @@ console.log(`the lowest weight Bike is ${lowerNameBike} with ${lowerWeightBike} 
 // Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0.
 
 
-let teams = [
+const teams = [
     {
         nome: 'Inter',
         puntiFatti: 0,
@@ -74,31 +80,29 @@ for (let i = 0; i < teams.length; i++) {
 
     console.log(`Risultati: ${teams[i].nome} ha ${teams[i].puntiFatti} punti e ${teams[i].falliSubiti} falli subiti`);
 
-    teams[i].puntiFatti = randomIntFromInterval(21, 28)
-    teams[i].falliSubiti = randomIntFromInterval(3, 10)
+    teams[i].puntiFatti = randomNumber(21, 28)
+    teams[i].falliSubiti = randomNumber(3, 10)
 
 }
 
 //  function 
-function randomIntFromInterval(min, max) { // min and max included 
+function randomNumber(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 
 for (let i = 0; i < teams.length; i++) {
-
     console.log(`Aggiornamento: ${teams[i].nome} ha ${teams[i].puntiFatti} punti e ${teams[i].falliSubiti} falli subiti`);
 }
 
 // Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
+const newTeams = [];
+
 for (i = 0; i < teams.length; i++) {
     const { nome, falliSubiti } = teams[i];
+    newTeams.push( {nome, falliSubiti});
     console.log(nome, falliSubiti);
 }
 
-let newArray = [];
-
-newArray.splice(teams);
-delete teams.puntiFatti;
-console.log(teams);
+console.log(newTeams);
