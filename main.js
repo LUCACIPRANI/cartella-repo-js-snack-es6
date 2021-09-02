@@ -108,7 +108,6 @@ for (i = 0; i < teams.length; i++) {
 console.log(newTeams);
 
 
-
 // Snack 3
 
 // Scrivere una funzione che accetti tre argomenti, un array e due numeri (a più piccolo di b).
@@ -116,12 +115,18 @@ console.log(newTeams);
 // Usiamo i nuovi metodi degli array forEach o filter.
 
 
-const cognomi = ['Bianchi', 'Rossi', 'Verdi', 'Mattei', 'Cecchinato', 'Djokovic', 'Nadal', 'Zverev', 'Berrettini', 'Francischi'];
+const players = ['Bianchi', 'Rossi', 'Verdi', 'Medvedev', 'Cecchinato', 'Djokovic', 'Nadal', 'Zverev', 'Berrettini', 'Tsitsipas'];
 
-const a = randomNumber(0, cognomi.length);
-const b = randomNumber(a, cognomi.length);
+const a = randomNumber(0, players.length);
+const b = randomNumber(a, players.length);
 
-// filter 
+
+// function randomNumber 
+function randomNumber(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+// WITH filter 
 
 const array1 = (array, a, b) => {
     return array.filter((element, index) => {
@@ -129,9 +134,10 @@ const array1 = (array, a, b) => {
     })
 };
 
-console.log(array1(cognomi, a, b), a, b);
+console.log(array1(players, a, b), a, b);
+console.log(`Players nel range A e B sono: ${array1(players, a, b)}`);
 
-// forEach 
+// WITH forEach 
 
 // const array = (array, a,b) => {
 //     const newArray = [];
@@ -143,4 +149,5 @@ console.log(array1(cognomi, a, b), a, b);
 //     return newArray;
 // };
 
-// console.log(array(cognomi, a,b), a, b);
+// console.log(array(players, a,b), a, b);
+// console.log(`Elementi nel range A e B: ${array1(players, a, b)}`);
